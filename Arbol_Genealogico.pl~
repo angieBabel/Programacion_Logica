@@ -28,9 +28,9 @@ esMadre(viki,cristian).
 esMadre(norma,valeria).
 esMadre(norma,fernando).
 
-abuelo(A,B):- esMadre(A,N), esMadre(N,B).
-abuelo(A,B):- esPadre(A,N), esPadre(N,B).
-abuelo(A,B):- esMadre(A,N), esPadre(N,B).
-abuelo(A,B):- esPadre(A,N), esMadre(N,B).
+es_abuelo(A,B):- esMama(A,N), esMama(N,B).
+es_abuelo(A,B):- esPapa(A,N), esPapa(N,B).
+es_abuelo(A,B):- esMama(A,N), esPapa(N,B).
+es_abuelo(A,B):- esPapa(A,N), esMama(N,B).
 
 
