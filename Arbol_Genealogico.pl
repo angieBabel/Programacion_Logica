@@ -38,6 +38,14 @@ nieto(A,B):- abuelo(B,A).
 hermano(A,B):- esmadre(X,A), esmadre(X,B),not(A=B).
 hermano(A,B):- espadre(Y,B),espadre(Y,A), not(A=B).
 
+sobrino(A,B):- hermano(B,N), esmadre(N,A).
+sobrino(A,B):- hermano(B,N), espadre(N,A).
+
+tio(A,B):- sobrino(B,A).
+
+primo(A, B):- tio(N,A), esmadre(N,B), not(A=B).
+primo(A,B):- tio(A,N), espadre(N,B), not(A=B).
+
 
 
 
