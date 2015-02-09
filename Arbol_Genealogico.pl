@@ -1,36 +1,43 @@
-esPadre(juan,jose).
-esPadre(juan,viki).
-esMadre(carmen,jose).
-esMadre(carmen,viki).
+espadre(juan,jose).
+espadre(juan,viki).
+esmadre(carmen,jose).
+esmadre(carmen,viki).
 
-esPadre(eliseo,angelica).
-esPadre(eliseo,javer).
-esPadre(eliseo,daniel).
-esMadre(graciela,angelica).
-esMadre(graciela,javier).
-esMadre(graciela,daniel).
+espadre(eliseo,angelica).
+espadre(eliseo,javer).
+espadre(eliseo,daniel).
+esmadre(graciela,angelica).
+esmadre(graciela,javier).
+esmadre(graciela,daniel).
 
-esPadre(jose,angie).
-esPadre(jose,adriana).
-esMadre(angelica,angie).
-esMadre(angelica,adriana).
+espadre(jose,angie).
+espadre(jose,adriana).
+esmadre(angelica,angie).
+esmadre(angelica,adriana).
 
-esPadre(javier,monce).
-esPadre(javier,liz).
+espadre(javier,monce).
+espadre(javier,liz).
 
-esPadre(daniel,oscar).
-esPadre(daniel,isrrael).
+espadre(daniel,oscar).
+espadre(daniel,isrrael).
 
-esMadre(viki,karina).
-esMadre(viki,norma).
-esMadre(viki,cristian).
+esmadre(viki,karina).
+esmadre(viki,norma).
+esmadre(viki,cristian).
 
-esMadre(norma,valeria).
-esMadre(norma,fernando).
+esmadre(norma,valeria).
+esmadre(norma,fernando).
 
-abuelo(A,B):- esMadre(A,N), esMadre(N,B).
-abuelo(A,B):- esPadre(A,N), esPadre(N,B).
-abuelo(A,B):- esMadre(A,N), esPadre(N,B).
-abuelo(A,B):- esPadre(A,N), esMadre(N,B).
+abuelo(A,B):- esmadre(A,N),esmadre(N,B).
+abuelo(A,B):- espadre(A,N), espadre(N,B).
+abuelo(A,B):- esmadre(A,N), espadre(N,B).
+abuelo(A,B):- espadre(A,N), esmadre(N,B).
+
+nieto(A,B):- abuelo(B,A).
+
+hermano(A,B):- esmadre(X,A), esmadre(X,B),not(A=B).
+hermano(A,B):- espadre(Y,B),espadre(Y,A), not(A=B).
+
+
 
 
