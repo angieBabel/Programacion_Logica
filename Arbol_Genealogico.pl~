@@ -28,23 +28,23 @@ esmadre(viki,cristian).
 esmadre(norma,valeria).
 esmadre(norma,fernando).
 
-abuelo(A,B):- esmadre(A,N),esmadre(N,B).
-abuelo(A,B):- espadre(A,N), espadre(N,B).
-abuelo(A,B):- esmadre(A,N), espadre(N,B).
-abuelo(A,B):- espadre(A,N), esmadre(N,B).
+abuelo(A,B):- esmadre(A,N),esmadre(N,B);espadre(A,N), espadre(N,B);esmadre(A,N), espadre(N,B);espadre(A,N), esmadre(N,B).
+%abuelo(A,B):- espadre(A,N), espadre(N,B).
+%abuelo(A,B):- esmadre(A,N), espadre(N,B).
+%abuelo(A,B):- espadre(A,N), esmadre(N,B).
 
 nieto(A,B):- abuelo(B,A).
 
-hermano(A,B):- esmadre(X,A), esmadre(X,B),not(A=B).
-hermano(A,B):- espadre(Y,B),espadre(Y,A), not(A=B).
+hermano(A,B):- esmadre(X,A), esmadre(X,B);espadre(Y,B),espadre(Y,A), not(A=B).
+%hermano(A,B):- espadre(Y,B),espadre(Y,A), not(A=B).
 
-sobrino(A,B):- hermano(B,N), esmadre(N,A).
-sobrino(A,B):- hermano(B,N), espadre(N,A).
+sobrino(A,B):- hermano(B,N), esmadre(N,A); hermano(B,N), espadre(N,A).
+%sobrino(A,B):- hermano(B,N), espadre(N,A).
 
 tio(A,B):- sobrino(B,A).
 
-primo(A, B):- tio(N,A), esmadre(N,B), not(A=B).
-primo(A,B):- tio(A,N), espadre(N,B), not(A=B)
+primo(A, B):- tio(N,A), esmadre(N,B);tio(A,N), espadre(N,B), not(A=B).
+%primo(A,B):- tio(A,N), espadre(N,B), not(A=B).
 
 
 
